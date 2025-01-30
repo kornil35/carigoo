@@ -92,15 +92,26 @@ button:hover {
 }
 
 .car-card {
-    background: #000000;
+    background: #f9f9f9;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: none;
-    width: 280px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
     text-align: center;
     font-weight: 400;
-    color: #ffffff;
+    color: #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #c6ffca, #c6ffca) border-box;
 }
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
 
 .car-card img {
     width: 100%;
@@ -108,9 +119,19 @@ button:hover {
 }
 
 .car-card button {
-    background: #ffffff;
-    color: #000000;
-    border: 2px solid #000000;
+    background: linear-gradient(45deg, #9affa2, #c6ffca);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.car-card button:hover {
+    background: linear-gradient(45deg, #c6ffca, #9affa2);
+    transform: scale(1.05);
 }
 
 .modal {
@@ -179,3 +200,47 @@ input, textarea {
     margin: 20px auto;
     color: #000000;
 }
+
+.info-item img {
+    max-width: 300px; /* или другое нужное значение */
+    height: auto;
+}
+
+.info-item img[src="images/delivery.png"] {
+    max-width: 300px;
+    height: auto;
+}
+
+.info-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* расстояние между элементами */
+}
+
+.info-item {
+    text-align: center;
+    max-width: 300px; /* ограничение ширины */
+}
+
+.info-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 100px; /* увеличь или уменьши значение по желанию */
+}
+
+#cars {
+    margin-top: 100px; /* или больше, если нужно */
+}
+
+.car-card {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+.car-card {
+    transition: transform 0.1s ease-out, scale 0.1s ease-out;
+    will-change: transform, scale;
+}
+
