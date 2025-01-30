@@ -3,15 +3,23 @@ function scrollToCars() {
 }
 
 function openForm(car) {
-    document.getElementById('car').value = car;
-    document.getElementById('rental-form').style.display = 'flex';
-}
-
-
+    const form = document.getElementById('rental-form');
+    if (form) {
+        document.getElementById('car').value = car;
+        form.classList.add('show'); // добавляем класс для анимации
+    }
+}   
 
 function closeForm() {
-    document.getElementById('rental-form').style.display = 'none';
+    const form = document.getElementById('rental-form');
+    if (form) {
+        form.classList.remove('show'); // убираем класс
+        setTimeout(() => {
+            form.style.display = 'none'; // скрываем после завершения анимации
+        }, 300);
+    }
 }
+
 
 document.getElementById('view-cars').addEventListener('click', scrollToCars);
 
@@ -34,16 +42,17 @@ function openForm(car) {
     const form = document.getElementById('rental-form');
     if (form) {
         document.getElementById('car').value = car;
-        form.style.display = 'flex';
+        form.classList.add('show');
     }
 }
 
 function closeForm() {
     const form = document.getElementById('rental-form');
     if (form) {
-        form.style.display = 'none';
+        form.classList.remove('show');
     }
 }
+
 
 
 const viewCarsButton = document.getElementById('view-cars');
@@ -89,3 +98,231 @@ document.querySelectorAll('.car-card').forEach(card => {
         card.style.transform = 'translate(0px, 0px) scale(1)'; // возвращаем в исходное состояние
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const langSelector = document.getElementById("language-selector");
+
+    fetch("translations.json")
+        .then(response => response.json())
+        .then(translations => {
+            function changeLanguage(lang) {
+                if (!translations[lang]) return;
+            
+                document.querySelector(".hero h1").textContent = translations[lang]["hero_title"];
+                document.querySelector(".hero p").textContent = translations[lang]["hero_text"];
+                document.querySelector("#view-cars").textContent = translations[lang]["button_text"];
+            
+                document.getElementById("toggle-snow").textContent = translations[lang]["toggle_snow"];
+                document.getElementById("snow-speed-value").textContent = `${document.getElementById("snow-speed").value} ${translations[lang]["snow_speed"]}`;
+                
+                // обновляем надписи "Больше" и "Меньше"
+                document.querySelector(".snow-slider-container .snow-label:first-child").textContent = translations[lang]["more"];
+                document.querySelector(".snow-slider-container .snow-label:last-child").textContent = translations[lang]["less"];
+            
+                localStorage.setItem("selectedLanguage", lang);
+            
+
+                const infoItems = document.querySelectorAll(".info-item");
+                if (infoItems.length >= 3) {
+                    infoItems[0].querySelector("h3").textContent = translations[lang]["delivery_title"];
+                    infoItems[0].querySelector("p").textContent = translations[lang]["delivery_text"];
+                    infoItems[1].querySelector("h3").textContent = translations[lang]["newcomer_title"];
+                    infoItems[1].querySelector("p").textContent = translations[lang]["newcomer_text"];
+                    infoItems[2].querySelector("h3").textContent = translations[lang]["flexible_title"];
+                    infoItems[2].querySelector("p").textContent = translations[lang]["flexible_text"];
+                }
+
+                document.querySelector("#cars h2").textContent = translations[lang]["cars_section"];
+                const carCards = document.querySelectorAll(".car-card");
+                if (carCards.length >= 2) {
+                    carCards[0].querySelector("h3").textContent = translations[lang]["car1_name"];
+                    carCards[0].querySelector("p").textContent = translations[lang]["car1_desc"];
+                    carCards[0].querySelector(".rent-button").textContent = translations[lang]["rent_button"];
+
+                    carCards[1].querySelector("h3").textContent = translations[lang]["car2_name"];
+                    carCards[1].querySelector("p").textContent = translations[lang]["car2_desc"];
+                    carCards[1].querySelector(".rent-button").textContent = translations[lang]["rent_button"];
+                }
+
+                document.querySelector("#contact h2").textContent = translations[lang]["contact_section"];
+                document.querySelector("#contact p:nth-of-type(1)").textContent = translations[lang]["phone"];
+                document.querySelector("#contact p:nth-of-type(2)").textContent = translations[lang]["email"];
+                document.querySelector("#contact button").textContent = translations[lang]["whatsapp_button"];
+
+                document.querySelector(".modal-content h2").textContent = translations[lang]["rental_form_title"];
+                document.querySelector("label[for='name']").textContent = translations[lang]["name_label"];
+                document.querySelector("label[for='contact']").textContent = translations[lang]["contact_label"];
+                document.querySelector("label[for='car']").textContent = translations[lang]["car_label"];
+                document.querySelector("label[for='message']").textContent = translations[lang]["message_label"];
+                document.querySelector(".modal-content button[type='submit']").textContent = translations[lang]["submit_button"];
+
+                localStorage.setItem("selectedLanguage", lang);
+            }
+
+            const savedLang = localStorage.getItem("selectedLanguage") || "en";
+            langSelector.value = savedLang;
+            changeLanguage(savedLang);
+
+            langSelector.addEventListener("change", (event) => {
+                changeLanguage(event.target.value);
+            });
+
+            // Плавное скрытие прелоадера
+            setTimeout(() => {
+                document.body.classList.add("loaded");
+            }, 500); // Добавили небольшую задержку
+        })
+        .catch(error => console.error("Ошибка загрузки переводов:", error));
+});
+
+const scrollUpButton = document.getElementById('scroll-up');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollUpButton.classList.add('show');
+    } else {
+        scrollUpButton.classList.remove('show');
+    }
+});
+
+scrollUpButton.addEventListener('click', () => {
+    scrollUpButton.classList.add('fly'); // запускаем анимацию
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // через 500мс (длительность анимации) убираем класс, чтобы кнопка вернулась
+    setTimeout(() => {
+        scrollUpButton.classList.remove('fly');
+        scrollUpButton.classList.remove('show');
+    }, 500);
+});
+
+let snowEnabled = false;
+let snowInterval;
+let snowFrequency = 700; // начальная частота
+
+function createSnowflake() {
+    if (!snowEnabled) return;
+
+    const snowflake = document.createElement('img');
+    snowflake.classList.add('snowflake');
+    snowflake.src = 'images/snowflake.png'; // путь к изображению снежинки
+
+    const size = Math.random() * 15 + 10; // размер 10-25px
+    const startPos = Math.random() * window.innerWidth;
+    const duration = Math.random() * 5 + 5; // падение 5-10 сек
+
+    snowflake.style.left = `${startPos}px`;
+    snowflake.style.width = `${size}px`;
+    snowflake.style.height = `${size}px`;
+    snowflake.style.animationDuration = `${duration}s`;
+
+    document.body.appendChild(snowflake);
+
+    setTimeout(() => {
+        snowflake.remove();
+    }, duration * 1000);
+}
+
+function startSnow() {
+    if (snowInterval) clearInterval(snowInterval);
+    snowInterval = setInterval(createSnowflake, snowFrequency);
+}
+
+document.getElementById('toggle-snow').addEventListener('click', function () {
+    snowEnabled = !snowEnabled;
+    const lang = localStorage.getItem("selectedLanguage") || "en"; // получаем текущий язык
+    fetch("translations.json")
+        .then(response => response.json())
+        .then(translations => {
+            this.textContent = snowEnabled ? translations[lang]["toggle_snow_off"] : translations[lang]["toggle_snow"];
+        });
+
+    if (snowEnabled) {
+        startSnow();
+    } else {
+        clearInterval(snowInterval);
+    }
+});
+
+
+document.getElementById('snow-speed').addEventListener('input', function () {
+    snowFrequency = this.value;
+    document.getElementById('snow-speed-value').textContent = this.value;
+    if (snowEnabled) startSnow();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("theme-toggle");
+    const logo = document.getElementById("logo");
+
+    function updateThemeButton() {
+        const isDark = document.body.classList.contains("dark-theme");
+        themeToggle.innerHTML = isDark ? "☀️" : "🌙";
+    }
+
+    function updateThemeWithLogo() {
+        const isDark = document.body.classList.contains("dark-theme");
+        if (logo) {
+            logo.style.opacity = "0"; // Сначала делаем логотип прозрачным
+            setTimeout(() => {
+                logo.src = isDark ? "images/logo-dark.png" : "images/logo.png"; // Меняем изображение
+                logo.style.opacity = "1"; // Плавно возвращаем
+            }, 200);
+        }
+    }
+
+    function applyThemeWithAnimation() {
+        const isDark = !document.body.classList.contains("dark-theme");
+        document.body.classList.toggle("dark-theme");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateThemeButton();
+        updateThemeWithLogo();
+    }
+
+    // Загружаем тему при старте
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+    }
+    
+    updateThemeButton();
+    updateThemeWithLogo(); // Убеждаемся, что логотип загружается правильно
+
+    themeToggle.addEventListener("click", applyThemeWithAnimation);
+});
+
+
+function updateThemeWithLogo() {
+    const isDark = document.body.classList.contains("dark-theme");
+    const logo = document.getElementById("logo");
+
+    if (logo) {
+        // устанавливаем правильный логотип в зависимости от темы
+        logo.src = isDark ? "images/logo-dark.png" : "images/logo.png";
+    }
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    updateThemeButton();
+}
+
+function applyThemeWithAnimation() {
+    const isDark = !document.body.classList.contains("dark-theme");
+    document.body.classList.toggle("dark-theme");
+    updateThemeWithLogo();
+}
+
+// загружаем тему при старте
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+    } else {
+        document.body.classList.remove("dark-theme");
+    }
+
+    updateThemeWithLogo();
+
+    document.getElementById("theme-toggle").addEventListener("click", applyThemeWithAnimation);
+});
+
