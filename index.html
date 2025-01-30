@@ -5,79 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carigoo - Аренда авто</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80vh;
-            padding: 0 180px;
-        }
-        .hero-content {
-            max-width: 600px;
-            margin-right: 120px;
-            text-align: left;
-        }
-        .hero h1 {
-            font-size: 50px;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-        .hero p {
-            font-size: 22px;
-            margin: 15px 0 25px;
-            color: #ddd;
-        }
-        .hero button {
-            background-color: #ffcc00;
-            border: none;
-            padding: 16px 32px;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .hero img {
-            max-width: 900px;
-            height: auto;
-        }
-    </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Арендуйте авто легко и удобно</h1>
-            <p>Выбирайте автомобиль и бронируйте за пару минут.</p>
-            <button id="view-cars">Выбрать авто</button>
-        </div>
-        <img src="images/title.png" alt="Аренда авто">
-    </section>
+    <header class="navbar" style="padding: 10px 20px; display: flex; align-items: center; justify-content: flex-start;">
+        <img src="images/logo.png" alt="Carigoo Logo" class="logo" style="max-width: 120px; height: auto;">
+    </header>
     
-    <section id="cars">
-        <h2>Наши автомобили</h2>
-        <div class="car-grid">
-            <div class="car-card">
-                <img src="images/car1.jpg" alt="Автомобиль 1">
-                <h3>Toyota Prius</h3>
-                <p>Гибрид, экономичный</p>
-                <button class="rent-button" data-car="Toyota Prius">Арендовать</button>
+    <div class="container">
+        <section class="hero" style="padding-top: 0px;">
+            <div class="hero-content">
+                <h1>Арендуйте авто легко и удобно</h1>
+                <p>Выбирайте автомобиль и бронируйте за пару минут.</p>
+                <button id="view-cars">Выбрать авто</button>
             </div>
-            <div class="car-card">
-                <img src="images/car2.jpg" alt="Автомобиль 2">
-                <h3>Lexus GS 350</h3>
-                <p>Комфорт и мощность</p>
-                <button class="rent-button" data-car="Lexus GS 350">Арендовать</button>
+            <img src="images/title.png" alt="Аренда авто">
+        </section>
+        
+        <section id="cars">
+            <h2>Наши автомобили</h2>
+            <div class="car-grid">
+                <div class="car-card">
+                    <img src="images/car1.jpg" alt="Автомобиль 1">
+                    <h3>Toyota Prius</h3>
+                    <p>Гибрид, экономичный</p>
+                    <button class="rent-button" data-car="Toyota Prius">Арендовать</button>
+                </div>
+                <div class="car-card">
+                    <img src="images/car2.jpg" alt="Автомобиль 2">
+                    <h3>Lexus GS 350</h3>
+                    <p>Комфорт и мощность</p>
+                    <button class="rent-button" data-car="Lexus GS 350">Арендовать</button>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <section id="contact">
-        <h2>Контакты</h2>
-        <p>Телефон: +1 (123) 456-7890</p>
-        <p>Email: info@carigoo.us</p>
-        <button onclick="window.open('https://wa.me/11234567890', '_blank')">Связаться в WhatsApp</button>
-    </section>
+        </section>
+        
+        <section id="contact">
+            <h2>Контакты</h2>
+            <p>Телефон: +1 (929) 704-4141</p>
+            <p>Email: info@carigoo.rent</p>
+            <button onclick="window.open('https://wa.me/19297044141', '_blank')">Связаться в WhatsApp</button>
+        </section>
+    </div>
     
     <div id="rental-form" class="modal">
         <div class="modal-content">
