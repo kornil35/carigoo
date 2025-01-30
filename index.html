@@ -8,10 +8,45 @@
     <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+<img id="scroll-up" src="images/scroll-up.png" alt="Прокрутить вверх">
+<div id="snow-controls">
+    <button id="toggle-snow">❄ Включить снег ❄</button>
+    <div class="snow-slider-container">
+        <span class="snow-label">Больше</span>
+        <input type="range" id="snow-speed" min="100" max="2000" step="100" value="1000">
+        <span class="snow-label">Меньше</span>
+    </div>
+    <span id="snow-speed-value">700</span>
+</div>
+
 <body>
-    <header class="navbar" style="padding: 10px 20px; display: flex; align-items: center; justify-content: flex-start;">
-        <img src="images/logo.png" alt="Carigoo Logo" class="logo" style="max-width: 120px; height: auto;">
+    <div id="preloader">
+    <div class="loader"></div>
+</div>
+
+
+
+
+    <header class="navbar" style="padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;">
+        <img id="logo" src="images/logo.png" alt="Carigoo Logo" class="logo" style="max-width: 120px; height: auto;">
+        <div class="header-right">
+            <button id="theme-toggle">🌙 Темная тема</button>
+            <select id="language-selector">
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+                <option value="uk">Українська</option>
+                <option value="es">Español</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+        
+        
     </header>
+    
+    
+    
+    
     
     <div class="container">
         <section class="hero" style="padding-top: 0px;">
@@ -27,7 +62,7 @@
             <div class="info-item">
                 <img src="images/delivery.png" alt="Доставка еды">
                 <h3>Работайте в доставке</h3>
-                <p>Используйте наши автомобили для работы в доставке еды и такси.</p>
+                <p>Используйте наши автомобили для работы в доставке еды.</p>
             </div>
             <div class="info-item">
                 <img src="images/newcomer.png" alt="Помощь новичкам">
