@@ -56,6 +56,11 @@ body {
     background: #ffffff;
     color: #000000;
     text-align: center;
+    body {
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    
+    
 }
 
 header {
@@ -66,6 +71,7 @@ header {
     font-weight: 600;
     box-shadow: none;
 }
+
 
 button {
     background: #000000;
@@ -78,6 +84,8 @@ button {
     font-weight: 600;
     transition: 0.3s;
 }
+
+
 
 button:hover {
     background: #333333;
@@ -161,6 +169,12 @@ button:hover {
     flex-direction: column;
     align-items: center;
     position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .modal-content {
+    background: #1e1e1e;
+    color: #ffffff;
 }
 
 .modal-content form {
@@ -168,6 +182,64 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #000000;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Поля ввода в тёмной теме */
+.dark-theme .modal-content input,
+.dark-theme .modal-content textarea {
+    background: #2b2b2b;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+/* Кнопка */
+.modal-content button {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Кнопка в тёмной теме */
+.dark-theme .modal-content button {
+    background: #ffffff;
+    color: #000000;
+}
+
+.dark-theme .modal-content button:hover {
+    background: #dddddd;
+}
+
+/* Закрывающий крестик */
+.modal-content .close {
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #000000;
+}
+
+/* Закрывающий крестик в тёмной теме */
+.dark-theme .modal-content .close {
+    color: #ffffff;
 }
 
 .close {
@@ -199,7 +271,16 @@ input, textarea {
     max-width: 500px;
     margin: 20px auto;
     color: #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Для тёмной темы */
+.dark-theme #contact {
+    background: #222;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
 
 .info-item img {
     max-width: 300px; /* или другое нужное значение */
@@ -244,85 +325,453 @@ input, textarea {
     will-change: transform, scale;
 }
 
-/* Основные стили */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+
+
+@media (max-width: 768px) {
+    .hero img {
+        display: none;
+    }
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 50px 0;
-}
-
-.hero-text {
-    max-width: 50%;
-}
-
-.hero img {
-    max-width: 100%;
-    height: auto;
-}
-
-.cars {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.car-card {
-    width: 48%; /* для двух колонок */
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* Адаптивность */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .hero {
         flex-direction: column;
         text-align: center;
+        padding: 0 20px;
+        height: auto;
     }
-    .hero-text {
-        max-width: 100%;
+
+    .hero-content {
+        margin-right: 0;
+        align-items: center;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 20px;
+    }
+
+    .hero-content {
+        margin-right: 0;
+        align-items: center;
+        gap: 20px; /* Увеличивает расстояние между элементами */
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 18px;
         margin-bottom: 20px;
+    }
+
+    .hero button {
+        margin-top: 10px;
     }
 }
 
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        text-align: center;
-    }
-    .cars {
-        flex-direction: column;
-        align-items: center;
-    }
-    .car-card {
-        width: 100%; /* на мобилках одна колонка */
-    }
-    .hero-text h1 {
-        font-size: 24px;
+    .hero button {
+        display: block;
+        margin: 0 auto;
     }
 }
 
+@media (max-width: 768px) {
+    .hero-content {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hero h1, .hero p {
+        text-align: center;
+    }
+}
 
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #fff;
+    }
+
+    .container {
+        display: none;
+    }
+
+    body::before {
+        content: "Переверните устройство в портретный режим";
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        color: #000;
+    }
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out; /* Плавное исчезновение */
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top-color: #c6ffca;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Когда сайт загружен — плавно скрываем */
+body.loaded #preloader {
+    opacity: 0;
+    pointer-events: none; /* Убираем кликабельность */
+}
+
+.language-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#language-selector {
+    appearance: none; /* Убираем стандартный стиль */
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    width: 150px;
+}
+
+/* Добавляем кастомную стрелочку */
+.language-container::after {
+    content: "▼";
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #555;
+}
+
+/* Эффект при наведении */
+#language-selector:hover {
+    border-color: #000;
+}
+
+/* Эффект при фокусе */
+#language-selector:focus {
+    border-color: #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+#scroll-up {
+    position: fixed;
+    bottom: 40px; /* подняли выше */
+    right: 40px; /* сдвинули левее */
+    width: 60px; /* немного увеличили */
+    height: 60px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.2s ease-in-out;
+    background: white; /* фон, чтобы выделялся */
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* тень для видимости */
+    padding: 10px;
+}
+
+#scroll-up.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scroll-up:hover {
+    transform: scale(1.1); /* небольшое увеличение при наведении */
+}
+
+@keyframes fly-away {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+    }
+}
+
+#scroll-up {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.2s ease-in-out;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+#scroll-up.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scroll-up.fly {
+    animation: fly-away 0.5s forwards;
+}
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+#snow-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#toggle-snow {
+    background: white;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#toggle-snow:hover {
+    background: lightgray;
+}
+
+#snow-speed {
+    width: 120px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #snow-controls, #snow-settings {
+        display: none !important;
+    }
+}
+
+.snow-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.snow-label {
+    font-size: 14px;
+    color: white;
+}
+
+.dark-theme {
+    background: #121212;
+    color: #ffffff;
+}
+
+.dark-theme .hero {
+    background: #121212;
+    color: #ffffff;
+}
+
+.dark-theme .hero h1,
+.dark-theme .hero p {
+    color: #ffffff;
+}
+
+.dark-theme .hero button {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.dark-theme .car-card {
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 2px solid #333;
+}
+
+.dark-theme .car-card button {
+    background: linear-gradient(45deg, #444, #666);
+    color: white;
+}
+
+.dark-theme header {
+    background: #121212;
+    color: #ffffff;
+}
+
+.dark-theme button {
+    background: #333;
+    color: white;
+}
+
+.dark-theme button:hover {
+    background: #555;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* расстояние между кнопкой и селектором */
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.2s ease;
+}
+
+/* Эффект небольшого увеличения при наведении */
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Чтобы кнопка не смещалась при изменении темы */
+#theme-toggle span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: black;
+    color: white;
+    border: 2px solid black;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s, color 0.3s, border 0.3s;
+}
+
+#theme-toggle:hover {
+    background: #333;
+}
+
+.dark-theme #theme-toggle {
+    background: white;
+    color: black;
+    border: 2px solid white;
+}
+
+.dark-theme #theme-toggle:hover {
+    background: #ddd;
+}
+
+#logo {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#logo {
+    transition: opacity 0.3s ease-in-out;
+}
