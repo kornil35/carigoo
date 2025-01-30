@@ -326,3 +326,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("theme-toggle").addEventListener("click", applyThemeWithAnimation);
 });
 
+function checkOrientation() {
+    if (window.innerWidth > window.innerHeight && window.innerWidth <= 768) {
+        document.body.classList.add('landscape-mode');
+    } else {
+        document.body.classList.remove('landscape-mode');
+    }
+}
+
+window.addEventListener('resize', checkOrientation);
+window.addEventListener('load', checkOrientation);
+
