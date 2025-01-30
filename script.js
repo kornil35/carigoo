@@ -7,6 +7,8 @@ function openForm(car) {
     document.getElementById('rental-form').style.display = 'flex';
 }
 
+
+
 function closeForm() {
     document.getElementById('rental-form').style.display = 'none';
 }
@@ -43,6 +45,7 @@ function closeForm() {
     }
 }
 
+
 const viewCarsButton = document.getElementById('view-cars');
 if (viewCarsButton) {
     viewCarsButton.addEventListener('click', scrollToCars);
@@ -58,3 +61,31 @@ const closeButton = document.querySelector('.close');
 if (closeButton) {
     closeButton.addEventListener('click', closeForm);
 }
+
+document.querySelectorAll('.car-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.05; // чувствительность движения
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.05;
+        
+        card.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translate(0px, 0px)';
+    });
+});
+
+document.querySelectorAll('.car-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.05; // движение влево-вправо
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.05; // движение вверх-вниз
+        
+        card.style.transform = `translate(${x}px, ${y}px) scale(1.05)`; // увеличиваем + двигаем
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translate(0px, 0px) scale(1)'; // возвращаем в исходное состояние
+    });
+});
