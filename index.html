@@ -9,20 +9,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <img id="scroll-up" src="images/scroll-up.png" alt="Прокрутить вверх">
-<div id="snow-controls">
-    <button id="toggle-snow">❄ Включить снег ❄</button>
-    <div class="snow-slider-container">
-        <span class="snow-label">Больше</span>
-        <input type="range" id="snow-speed" min="100" max="2000" step="100" value="1000">
-        <span class="snow-label">Меньше</span>
+<div id="snow-container">
+    <div id="snow-controls">
+        <button id="toggle-snow">❄ Включить снег ❄</button>
+        <span id="close-snow">&times;</span>
+        <div class="snow-slider-container">
+            <span class="snow-label">Больше</span>
+            <input type="range" id="snow-speed" min="100" max="2000" step="100" value="1000">
+            <span class="snow-label">Меньше</span>
+        </div>
+        <span id="snow-speed-value">1000</span>
     </div>
-    <span id="snow-speed-value">700</span>
+    <div id="snowflake-icon">❄</div>
 </div>
+
 
 <body>
     <div id="preloader">
     <div class="loader"></div>
 </div>
+
+
 
 
 
