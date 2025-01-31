@@ -847,3 +847,204 @@ body.loaded #preloader {
 .availability-indicator.green {
     animation: pulse 1.2s infinite ease-in-out;
 }
+
+#snow-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+#snow-controls {
+    background: rgb(146, 224, 255);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+#close-snow {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+
+#snowflake-icon {
+    display: none;
+    font-size: 100px;
+    cursor: pointer;
+    color: rgb(149, 225, 255);
+    text-align: center;
+}
+
+
+@keyframes smooth-swing {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+#snowflake-icon:hover {
+    animation: smooth-swing 1s infinite ease-in-out; /* Плавная раскачка */
+}
+
+#view-cars {
+    border-radius: 999px;
+}
+
+#view-cars {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#view-cars:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.car-card button {
+    background: linear-gradient(135deg, #00c853, #66ffa6);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px; /* Круглая кнопка */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4);
+}
+
+.car-card button:hover {
+    background: linear-gradient(135deg, #00e676, #00c853);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 200, 83, 0.6);
+}
+
+.car-card {
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #00c853, #66ffa6) border-box;
+}
+
+.car-card button {
+    background: linear-gradient(135deg, #00c853, #66ffa6);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px; /* Круглая кнопка */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 200, 83, 0.4); /* Светлая тень */
+}
+
+/* Темная тема - убираем зеленую тень */
+.dark-theme .car-card button {
+    box-shadow: none;
+}
+
+/* Эффект при наведении */
+.car-card button:hover {
+    background: linear-gradient(135deg, #00e676, #00c853);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 200, 83, 0.6);
+}
+
+/* Темная тема - наведение без тени */
+.dark-theme .car-card button:hover {
+    box-shadow: none;
+}
+
+#contact {
+    background: #1a1a1a; /* Темный фон */
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Глубокая тень */
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Легкая рамка */
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+#contact h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+#contact p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 5px 0;
+}
+
+#contact p a {
+    color: #66ff99; /* Светлый премиальный оттенок */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#contact p a:hover {
+    text-decoration: underline;
+}
+
+#contact p:first-of-type::before {
+    content: "📞 ";
+}
+
+#contact p:last-of-type::before {
+    content: "✉ ";
+}
+
+#contact button {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    font-size: 16px; /* Сделал чуть меньше */
+    font-weight: bold;
+    padding: 12px 20px; /* Уменьшил отступы */
+    border: none;
+    border-radius: 25px; /* Сделал плавнее */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    margin: 15px auto; /* Добавил автоматическое центрирование */
+    width: fit-content; /* Чтобы не растягивалась */
+}
+
+#contact button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.5);
+}
+
+#contact button::before {
+    content: "💬";
+    font-size: 18px;
+}
+
+
+#contact button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+#contact button::before {
+    content: "💬";
+    font-size: 20px;
+}
