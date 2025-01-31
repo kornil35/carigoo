@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Carigoo - Аренда авто</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
@@ -34,17 +35,18 @@
 
 
 
+
     <header class="navbar" style="padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;">
         <img id="logo" src="images/logo.png" alt="Carigoo Logo" class="logo" style="max-width: 120px; height: auto;">
         <div class="header-right">
             <button id="theme-toggle">🌙 Темная тема</button>
             <select id="language-selector">
-                <option value="ru">Русский</option>
                 <option value="en">English</option>
-                <option value="uk">Українська</option>
                 <option value="es">Español</option>
-                <option value="ja">日本語</option>
+                <option value="ru">Русский</option>
+                <option value="uk">Українська</option>
                 <option value="zh">中文</option>
+                <option value="ja">日本語</option>
             </select>
         </div>
         
@@ -88,18 +90,59 @@
             <div class="car-grid"> <!-- добавил контейнер -->
                 <div class="car-card">
                     <div class="availability-indicator" data-car="Toyota Prius"></div>
-                    <img src="images/car1.jpg" alt="Автомобиль 1">
+                    <div class="image-slider">
+                        <button class="prev">&#10094;</button>
+                        <img src="Toyota Prius 2014 Black/car1.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_2.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_3.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_4.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_5.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_6.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_7.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_8.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_9.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_10.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_11.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_12.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_13.jpg" alt="Toyota Prius">
+                        <img src="Toyota Prius 2014 Black/car1_14.jpg" alt="Toyota Prius">
+                        <button class="next">&#10095;</button>
+                    </div>
                     <h3>Toyota Prius</h3>
                     <p>Гибрид, экономичный</p>
                     <button class="rent-button" data-car="Toyota Prius">Арендовать</button>
                 </div>
+                
+                
         
                 <div class="car-card">
-                    <div class="availability-indicator" data-car="Lexus GS 350"></div>
-                    <img src="images/car2.jpg" alt="Автомобиль 2">
-                    <h3>Lexus GS 350</h3>
-                    <p>Комфорт и мощность</p>
-                    <button class="rent-button" data-car="Lexus GS 350">Арендовать</button>
+                    <div class="availability-indicator" data-car="Honda Civic 2010"></div>
+                    <div class="image-slider">
+                        <button class="prev">&#10094;</button>
+                        <img src="Honda Civic 2010/car1.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_2.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_3.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_4.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_5.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_6.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_8.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_9.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_10.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_11.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_12.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_13.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_14.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_15.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_16.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_17.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_18.avif" alt="Honda Civic 2010">
+                        <img src="Honda Civic 2010/car1_19.avif" alt="Honda Civic 2010">
+                        <button class="next">&#10095;</button>                        
+                    </div>
+                    <h3>Honda Civic 2010</h3>
+                    <p>Экономичный и надежный седан</p>
+                    <button class="rent-button" data-car="Honda Civic 2010">Арендовать</button>
+                    
                 </div>
             </div>
         </section>
@@ -135,5 +178,15 @@
         </div>
     </div>
     <script src="script.js"></script>
+
+<div id="lightbox" class="lightbox">
+    <div id="lightbox-counter" class="lightbox-counter">1 / X</div>
+    <div class="lightbox-prev"></div>
+    <img id="lightbox-img" src="" alt="Фото">
+    <div class="lightbox-next"></div>
+    <span class="close-lightbox">&times;</span>
+</div>
+
+    
 </body>
 </html>
