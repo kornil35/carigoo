@@ -346,3 +346,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const snowControls = document.getElementById("snow-controls");
+    const snowflakeIcon = document.getElementById("snowflake-icon");
+    const closeSnow = document.getElementById("close-snow");
+
+    closeSnow.addEventListener("click", function () {
+        snowControls.style.display = "none";
+        snowflakeIcon.style.display = "block"; // показываем снежинку
+    });
+
+    snowflakeIcon.addEventListener("click", function () {
+        snowControls.style.display = "flex";
+        snowflakeIcon.style.display = "none"; // скрываем снежинку
+    });
+});
+
