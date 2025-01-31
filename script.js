@@ -326,14 +326,23 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("theme-toggle").addEventListener("click", applyThemeWithAnimation);
 });
 
-function checkOrientation() {
-    if (window.innerWidth > window.innerHeight && window.innerWidth <= 768) {
-        document.body.classList.add('landscape-mode');
-    } else {
-        document.body.classList.remove('landscape-mode');
-    }
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const carAvailability = {
+        "Toyota Prius": true,  // true - доступно, false - занято
+        "Lexus GS 350": true
+    };
 
-window.addEventListener('resize', checkOrientation);
-window.addEventListener('load', checkOrientation);
+    document.querySelectorAll(".availability-indicator").forEach(indicator => {
+        const carName = indicator.getAttribute("data-car");
+        if (carAvailability[carName]) {
+            indicator.style.backgroundColor = "green";
+            indicator.classList.add("green"); // добавляем анимацию
+        } else {
+            indicator.style.backgroundColor = "red";
+            indicator.classList.remove("green"); // убираем анимацию
+        }
+    });
+    
+});
+
 
