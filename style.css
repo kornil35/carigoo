@@ -404,7 +404,9 @@ input, textarea {
     }
 }
 
-@media screen and (max-width: 768px) and (orientation: landscape) {
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+
+
     body {
         display: flex;
         justify-content: center;
@@ -424,6 +426,25 @@ input, textarea {
         text-align: center;
         color: #000;
     }
+
+    body::after {
+    content: "Переверните устройство в портретный режим";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    z-index: 9999;
+}
+
 }
 
 
@@ -782,4 +803,47 @@ body.loaded #preloader {
     width: calc(100% - 24px);
     max-width: 280px;
     resize: none;
+}
+
+.car-card {
+    position: relative;
+}
+
+.availability-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white; /* чтобы кружок выделялся */
+    background-color: gray;
+}
+
+.car-card img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Новый стиль - прикрепляет индикатор к изображению */
+.car-card img {
+    position: relative;
+}
+
+.availability-indicator {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    z-index: 2;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.availability-indicator.green {
+    animation: pulse 1.2s infinite ease-in-out;
 }
