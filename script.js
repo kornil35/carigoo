@@ -450,3 +450,104 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const rotateWarning = document.getElementById("rotate-warning");
+
+    async function loadTranslations() {
+        try {
+            const response = await fetch("translations.json");
+            const translations = await response.json();
+            return translations;
+        } catch (error) {
+            console.error("Ошибка загрузки translations.json", error);
+            return null;
+        }
+    }
+
+    async function updateRotateMessage() {
+        const translations = await loadTranslations();
+        if (!translations) return;
+
+        const lang = document.documentElement.lang || "ru";
+        rotateWarning.textContent = translations[lang]?.rotate_message || translations["ru"].rotate_message;
+    }
+
+    updateRotateMessage();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("rental-form");
+    const closeModal = document.querySelector(".modal .close");
+    const rentButtons = document.querySelectorAll(".rent-button");
+    const carInput = document.getElementById("car");
+    const form = document.querySelector(".modal-content form");
+    const successPopup = document.getElementById("success-popup");
+    const sendButton = form.querySelector("button[type='submit']");
+
+    rentButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            carInput.value = this.getAttribute("data-car");
+            modal.classList.add("show");
+        });
+    });
+
+    closeModal.addEventListener("click", function() {
+        modal.classList.remove("show");
+    });
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        sendButton.disabled = true;  // блокируем кнопку
+        sendButton.classList.add("loading"); // добавляем спиннер
+        sendButton.innerHTML = "Отправка..."; // меняем текст
+
+        const name = document.getElementById("name").value;
+        const contact = document.getElementById("contact").value;
+        const car = document.getElementById("car").value;
+        const message = document.getElementById("message").value;
+
+        const formData = new FormData();
+        formData.append("_subject", "Новая заявка на аренду");
+        formData.append("Имя", name);
+        formData.append("Контакты", contact);
+        formData.append("Выбранное авто", car);
+        formData.append("Комментарий", message);
+
+        fetch("https://formsubmit.co/kornillit555@gmail.com", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                successPopup.classList.add("show");
+
+                setTimeout(() => {
+                    successPopup.classList.add("hide");
+                }, 3000);
+
+                setTimeout(() => {
+                    successPopup.classList.remove("show", "hide");
+                    sendButton.disabled = false;  // снова активируем кнопку
+                    sendButton.classList.remove("loading"); // убираем спиннер
+                    sendButton.innerHTML = "Send"; // возвращаем текст
+                }, 3500);
+
+                modal.classList.remove("show");
+                form.reset();
+            } else {
+                alert("Ошибка при отправке заявки.");
+                sendButton.disabled = false;
+                sendButton.classList.remove("loading");
+                sendButton.innerHTML = "Send";
+            }
+        })
+        .catch(error => {
+            console.error("Ошибка при отправке:", error);
+            alert("Ошибка при отправке заявки. Попробуйте позже.");
+            sendButton.disabled = false;
+            sendButton.classList.remove("loading");
+            sendButton.innerHTML = "Send";
+        });
+    });
+});
