@@ -400,10 +400,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         images.forEach((img, index) => {
             img.addEventListener("click", function () {
-                lightboxImages = Array.from(images);
+                // Запоминаем только фото из текущего слайдера!
+                lightboxImages = Array.from(slider.querySelectorAll("img"));
                 lightboxIndex = index;
                 lightboxImg.src = lightboxImages[lightboxIndex].src;
+
                 lightbox.style.display = "flex";
+
+                requestAnimationFrame(() => {
+                    lightbox.classList.add("show");
+                });
+
                 updateCounter();
             });
         });
@@ -426,16 +433,20 @@ document.addEventListener("DOMContentLoaded", function () {
             showLightboxImage(lightboxIndex + 1);
         });
 
+        function closeLightboxFunc() {
+            lightbox.classList.remove("show");
+            setTimeout(() => {
+                lightbox.style.display = "none";
+            }, 300);
+        }
+
         lightbox.addEventListener("click", function (e) {
             if (e.target === lightbox || e.target === lightboxImg) {
-                lightbox.style.display = "none";
+                closeLightboxFunc();
             }
         });
 
-        closeLightbox.addEventListener("click", function () {
-            lightbox.style.display = "none";
-        });
+        closeLightbox.addEventListener("click", closeLightboxFunc);
     });
 });
-
 
