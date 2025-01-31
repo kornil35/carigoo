@@ -10,9 +10,9 @@
       "flexible_title": "Гибкие условия аренды",
       "flexible_text": "От одного дня до нескольких месяцев – выберите удобный вариант.",
       "cars_section": "Наши автомобили",
-      "car1_name": "Toyota Prius",
+      "car1_name": "Toyota Prius 2014",
       "car1_desc": "Гибрид, экономичный",
-      "car2_name": "Lexus GS 350",
+      "car2_name": "Honda Civic 2010",
       "car2_desc": "Комфорт и мощность",
       "rent_button": "Арендовать",
       "contact_section": "Контакты",
@@ -29,7 +29,8 @@
       "toggle_snow_off": "❄ Выключить снег ❄",
       "more": "Больше",
       "less": "Меньше",
-      "snow_speed": " "
+      "snow_speed": " ",
+      "rotate_message": "Переверните устройство в портретный режим"
     },
     "en": {
       "hero_title": "Rent a car easily and conveniently",
@@ -42,10 +43,10 @@
       "flexible_title": "Flexible rental conditions",
       "flexible_text": "From one day to several months – choose the option that suits you best.",
       "cars_section": "Our Cars",
-      "car1_name": "Toyota Prius",
+      "car1_name": "Toyota Prius 2014",
       "car1_desc": "Hybrid, economical",
-      "car2_name": "Lexus GS 350",
-      "car2_desc": "Comfort and power",
+      "car2_name": "Honda Civic 2010",
+      "car2_desc": "Economical and reliable sedan",
       "rent_button": "Rent",
       "contact_section": "Contacts",
       "phone": "Phone: +1 (929) 704-4141",
@@ -61,7 +62,8 @@
       "toggle_snow_off": "❄ Turn off snow ❄",
       "more": "More",
       "less": "Less",
-      "snow_speed": " "
+      "snow_speed": " ",
+      "rotate_message": "Rotate your device to portrait mode"
     },
     "uk": {
       "hero_title": "Орендуйте авто легко та зручно",
@@ -74,10 +76,10 @@
       "flexible_title": "Гнучкі умови оренди",
       "flexible_text": "Від одного дня до кількох місяців – виберіть зручний варіант.",
       "cars_section": "Наші автомобілі",
-      "car1_name": "Toyota Prius",
+      "car1_name": "Toyota Prius 2014",
       "car1_desc": "Гібрид, економний",
-      "car2_name": "Lexus GS 350",
-      "car2_desc": "Комфорт і потужність",
+      "car2_name": "Honda Civic 2010",
+      "car2_desc": "Економічний та надійний седан",
       "rent_button": "Орендувати",
       "contact_section": "Контакти",
       "phone": "Телефон: +1 (929) 704-4141",
@@ -93,7 +95,8 @@
       "toggle_snow_off": "❄ Вимкнути сніг ❄",
       "more": "Більше",
       "less": "Менше",
-      "snow_speed": " "
+      "snow_speed": " ",
+      "rotate_message": "Переверніть пристрій у портретний режим"
     },
     "es": {
       "hero_title": "Alquila un coche fácil y cómodamente",
@@ -106,10 +109,10 @@
       "flexible_title": "Condiciones de alquiler flexibles",
       "flexible_text": "Desde un día hasta varios meses – elige la opción que mejor se adapte.",
       "cars_section": "Nuestros coches",
-      "car1_name": "Toyota Prius",
+      "car1_name": "Toyota Prius 2014",
       "car1_desc": "Híbrido, económico",
-      "car2_name": "Lexus GS 350",
-      "car2_desc": "Comodidad y potencia",
+      "car2_name": "Honda Civic 2010",
+      "car2_desc": "Sedán económico y fiable",
       "rent_button": "Alquilar",
       "contact_section": "Contactos",
       "phone": "Teléfono: +1 (929) 704-4141",
@@ -125,7 +128,8 @@
       "toggle_snow_off": "❄ Desactivar nieve ❄",
       "more": "Más",
       "less": "Menos",
-      "snow_speed": " "
+      "snow_speed": " ",
+      "rotate_message": "Gira tu dispositivo al modo vertical"
     },
     "ja": {
       "hero_title": "簡単かつ便利に車をレンタル",
@@ -138,10 +142,10 @@
       "flexible_title": "柔軟なレンタル条件",
       "flexible_text": "1日から数ヶ月まで – お好きなオプションを選択してください。",
       "cars_section": "当社の車",
-      "car1_name": "トヨタ プリウス",
+      "car1_name": "トヨタ プリウス 2014",
       "car1_desc": "ハイブリッド、燃費良好",
-      "car2_name": "レクサス GS 350",
-      "car2_desc": "快適さとパワー",
+      "car2_name": "ホンダ シビック 2010",
+      "car2_desc": "経済的で信頼性の高いセダン",
       "rent_button": "レンタルする",
       "contact_section": "お問い合わせ",
       "phone": "電話番号: +1 (929) 704-4141",
@@ -157,7 +161,8 @@
       "toggle_snow_off": "❄ 雪をオフ ❄",
       "more": "多い",
       "less": "少ない",
-      "snow_speed": " "
+      "snow_speed": " ",
+      "rotate_message": "デバイスを縦向きに回転させてください"
     },
     "zh": {
       "hero_title": "轻松便捷租车",
@@ -170,10 +175,10 @@
       "flexible_title": "灵活的租赁条件",
       "flexible_text": "从一天到几个月 – 选择最适合您的方案。",
       "cars_section": "我们的汽车",
-      "car1_name": "Toyota Prius",
+      "car1_name": "丰田普锐斯 2014",
       "car1_desc": "混合动力，节能环保",
-      "car2_name": "Nissan GS 350",
-      "car2_desc": "舒适与动力兼备",
+      "car2_name": "本田思域 2010",
+      "car2_desc": "经济实惠且可靠的轿车",
       "rent_button": "租赁",
       "contact_section": "联系方式",
       "phone": "电话: +1 (929) 704-4141",
@@ -189,6 +194,7 @@
       "toggle_snow_off": "❄ 关闭雪花 ❄",
       "more": "更多",
       "less": "更少",
-      "snow_speed": " "
+      "snow_speed": " ",
+      "rotate_message": "请将设备旋转到竖屏模式"
     }
   }
