@@ -551,3 +551,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    let snowflake = document.getElementById("snowflake-icon");
+    let sound = document.getElementById("new-year-sound");
+
+    sound.volume = 0.05; // установи громкость (0.3 = 30% от максимума)
+
+    snowflake.addEventListener("mouseenter", function() {
+        sound.currentTime = 0; // перезапуск звука
+        sound.play();
+    });
+});
