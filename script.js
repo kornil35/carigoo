@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
     const carAvailability = {
         "Toyota Prius": true,  // true - доступно, false - занято
-        "Lexus GS 350": true
+        "Honda Civic 2010": true
     };
 
     document.querySelectorAll(".availability-indicator").forEach(indicator => {
@@ -361,4 +361,81 @@ document.addEventListener("DOMContentLoaded", function () {
         snowflakeIcon.style.display = "none"; // скрываем снежинку
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".image-slider").forEach(slider => {
+        let images = slider.querySelectorAll("img");
+        let prevButton = slider.querySelector(".prev");
+        let nextButton = slider.querySelector(".next");
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove("active"));
+            images[index].classList.add("active");
+        }
+
+        prevButton.addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        showImage(currentIndex);
+
+        // Lightbox логика
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const lightboxCounter = document.getElementById("lightbox-counter");
+        const closeLightbox = document.querySelector(".close-lightbox");
+        const lightboxPrev = document.querySelector(".lightbox-prev");
+        const lightboxNext = document.querySelector(".lightbox-next");
+
+        let lightboxImages = [];
+        let lightboxIndex = 0;
+
+        images.forEach((img, index) => {
+            img.addEventListener("click", function () {
+                lightboxImages = Array.from(images);
+                lightboxIndex = index;
+                lightboxImg.src = lightboxImages[lightboxIndex].src;
+                lightbox.style.display = "flex";
+                updateCounter();
+            });
+        });
+
+        function showLightboxImage(index) {
+            lightboxIndex = (index + lightboxImages.length) % lightboxImages.length;
+            lightboxImg.src = lightboxImages[lightboxIndex].src;
+            updateCounter();
+        }
+
+        function updateCounter() {
+            lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
+        }
+
+        lightboxPrev.addEventListener("click", function () {
+            showLightboxImage(lightboxIndex - 1);
+        });
+
+        lightboxNext.addEventListener("click", function () {
+            showLightboxImage(lightboxIndex + 1);
+        });
+
+        lightbox.addEventListener("click", function (e) {
+            if (e.target === lightbox || e.target === lightboxImg) {
+                lightbox.style.display = "none";
+            }
+        });
+
+        closeLightbox.addEventListener("click", function () {
+            lightbox.style.display = "none";
+        });
+    });
+});
+
 
