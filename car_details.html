@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали автомобиля</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="back-button">&larr; Назад</a>
+        <h1 id="car-title">Название автомобиля</h1>
+    </header>
+    
+    <div class="car-details-container">
+        <div class="image-slider">
+            <button class="prev">&#10094;</button>
+            <img id="car-image" src="" alt="Автомобиль">
+            <button class="next">&#10095;</button>
+        </div>
+        <div class="car-info">
+            <h2>Характеристики</h2>
+            <p><strong>Год выпуска:</strong> <span id="car-year"></span></p>
+            <p><strong>Тип топлива:</strong> <span id="car-fuel"></span></p>
+            <p><strong>Расход:</strong> <span id="car-consumption"></span></p>
+            <p><strong>Мощность:</strong> <span id="car-power"></span></p>
+            <p><strong>Цена за день:</strong> <span id="car-price"></span></p>
+            <button id="rent-button">Арендовать</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById("car-title").innerText = params.get("name") || "Автомобиль";
+            document.getElementById("car-image").src = params.get("image") || "placeholder.jpg";
+            document.getElementById("car-year").innerText = params.get("year") || "-";
+            document.getElementById("car-fuel").innerText = params.get("fuel") || "-";
+            document.getElementById("car-consumption").innerText = params.get("consumption") || "-";
+            document.getElementById("car-power").innerText = params.get("power") || "-";
+            document.getElementById("car-price").innerText = params.get("price") || "-";
+        });
+
+        document.querySelectorAll(".car-card").forEach(card => {
+            card.addEventListener("click", function(event) {
+                if (!event.target.classList.contains("rent-button")) {
+                    const carName = this.querySelector("h3").innerText;
+                    const carImage = this.querySelector("img").src;
+                    const carYear = this.getAttribute("data-year");
+                    const carFuel = this.getAttribute("data-fuel");
+                    const carConsumption = this.getAttribute("data-consumption");
+                    const carPower = this.getAttribute("data-power");
+                    const carPrice = this.getAttribute("data-price");
+                    
+                    window.location.href = `car_details.html?name=${encodeURIComponent(carName)}&image=${encodeURIComponent(carImage)}&year=${encodeURIComponent(carYear)}&fuel=${encodeURIComponent(carFuel)}&consumption=${encodeURIComponent(carConsumption)}&power=${encodeURIComponent(carPower)}&price=${encodeURIComponent(carPrice)}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
