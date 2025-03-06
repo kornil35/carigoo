@@ -111,13 +111,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector(".hero h1").textContent = translations[lang]["hero_title"];
                 document.querySelector(".hero p").textContent = translations[lang]["hero_text"];
                 document.querySelector("#view-cars").textContent = translations[lang]["button_text"];
+                
             
                 document.getElementById("toggle-snow").textContent = translations[lang]["toggle_snow"];
                 document.getElementById("snow-speed-value").textContent = `${document.getElementById("snow-speed").value} ${translations[lang]["snow_speed"]}`;
                 
+                
                 // обновляем надписи "Больше" и "Меньше"
                 document.querySelector(".snow-slider-container .snow-label:first-child").textContent = translations[lang]["more"];
                 document.querySelector(".snow-slider-container .snow-label:last-child").textContent = translations[lang]["less"];
+                
             
                 localStorage.setItem("selectedLanguage", lang);
             
@@ -155,6 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector("label[for='car']").textContent = translations[lang]["car_label"];
                 document.querySelector("label[for='message']").textContent = translations[lang]["message_label"];
                 document.querySelector(".modal-content button[type='submit']").textContent = translations[lang]["submit_button"];
+                
+                updateRotateMessage(); // добавь эту строку
 
                 localStorage.setItem("selectedLanguage", lang);
             }
@@ -450,19 +455,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const rotateWarning = document.getElementById("rotate-warning");
 
-    async function loadTranslations() {
-        try {
-            const response = await fetch("translations.json");
-            const translations = await response.json();
-            return translations;
-        } catch (error) {
-            console.error("Ошибка загрузки translations.json", error);
-            return null;
-        }
-    }
 
     async function updateRotateMessage() {
         const translations = await loadTranslations();
@@ -473,7 +466,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateRotateMessage();
-});
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const modal = document.getElementById("rental-form");
@@ -561,5 +554,53 @@ document.addEventListener("DOMContentLoaded", function() {
     snowflake.addEventListener("mouseenter", function() {
         sound.currentTime = 0; // перезапуск звука
         sound.play();
+    });
+});
+
+
+document.querySelectorAll(".info-button").forEach(button => {
+    button.addEventListener("click", function () {
+        const carCard = this.closest(".car-card");
+        const carName = carCard.querySelector("h3").innerText;
+        const carImage = carCard.getAttribute("data-image"); // теперь фото берём из data-image
+        const carYear = carCard.getAttribute("data-year");
+        const carFuel = carCard.getAttribute("data-fuel");
+        const carConsumption = carCard.getAttribute("data-consumption");
+        const carPower = carCard.getAttribute("data-power");
+        const carPrice = carCard.getAttribute("data-price");
+
+        window.location.href = `car-details.html?id=${carId}`;
+
+    });
+});
+
+const cars = [
+    {
+        id: 1,
+        name: "Toyota Prius 2014",
+        image: "Toyota Prius 2014 Black/car1.webp",
+        year: 2014,
+        fuel: "Гибрид",
+        consumption: "5.1 л/100км",
+        power: "121 л.с.",
+        price: "40$"
+    },
+    {
+        id: 2,
+        name: "Honda Civic 2010",
+        image: "Honda Civic 2010/car1.avif",
+        year: 2010,
+        fuel: "Гибрид",
+        consumption: "6 л/100км",
+        power: "104 л.с.",
+        price: "30$"
+    }
+];
+
+document.querySelectorAll(".info-button").forEach(button => {
+    button.addEventListener("click", function() {
+        const carCard = this.closest(".car-card");
+        const carId = cars.findIndex(car => car.name === carCard.querySelector("h3").innerText) + 1;  
+        window.location.href = `car-details.html?id=${carId}`;
     });
 });
